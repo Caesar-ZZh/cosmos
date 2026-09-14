@@ -35,6 +35,11 @@ export function Settings() {
   };
 
   const saveApi = () => {
+    const picked = apiModels.find((m) => m.id === apiId);
+    if (picked?.comingSoon) {
+      toast.error("该模型上游尚未就绪，暂不可用");
+      return;
+    }
     if (!baseURL.trim() || !modelName.trim()) {
       toast.error("请填完 Base URL、Model");
       return;
@@ -150,7 +155,9 @@ export function Settings() {
               <select value={apiId} onChange={(e) => pickApiModel(e.target.value)}
                 className="w-full rounded-lg border border-border bg-black/20 px-3 py-2 text-sm outline-none focus:border-primary/50">
                 {apiModels.map((m) => (
-                  <option key={m.id} value={m.id}>{m.name} —— {m.description}</option>
+                  <option key={m.id} value={m.id} disabled={m.comingSoon}>
+                    {m.comingSoon ? `${m.name}（即将支持）` : m.name} —— {m.description}
+                  </option>
                 ))}
               </select>
             </div>
