@@ -88,7 +88,7 @@ def resolve_llm_creds():
     base = os.environ.get("LLM_BASE_URL") or os.environ.get("NASDX_BASE_URL")
     key = os.environ.get("LLM_API_KEY") or os.environ.get("NASDX_API_KEY")
     model = (os.environ.get("LLM_MODEL") or os.environ.get("NASDX_MODEL")
-             or "agnes-2.5-flash")
+             or "agnes-3.0-flash")
     # 复用项目自带配置解析器（最权威，覆盖 APPDATA / 显式路径 / 仓库根）
     try:
         import importlib.util

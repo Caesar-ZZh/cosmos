@@ -57,9 +57,8 @@ export const aiModels: ModelConfig[] = [
   { id: "cursor-agent", name: "Cursor Agent", description: "Cursor Agent 订阅", provider: "cli-cursor", comingSoon: true },
   { id: "kimi", name: "Kimi", description: "Kimi 订阅", provider: "cli-kimi", comingSoon: true },
   // —— API 版（填自己的 key）——
-  { id: "agnes-2.5-flash", name: "Agnes 2.5 Flash", description: "Apihub Agnes · 快而省 · 默认推荐", provider: "agnes" },
-  // 3.0-flash 已出现在 Agnes /v1/models，但调用持续超时（2026-09-14 实测 8/9 超时），上游未就绪，先锁定
-  { id: "agnes-3.0-flash", name: "Agnes 3.0 Flash", description: "Apihub Agnes · 上游未就绪，暂不可选", provider: "agnes", comingSoon: true },
+  { id: "agnes-3.0-flash", name: "Agnes 3.0 Flash", description: "Apihub Agnes · 全新代 · 推理更强 · 默认推荐", provider: "agnes" },
+  { id: "agnes-2.5-flash", name: "Agnes 2.5 Flash", description: "Apihub Agnes · 快而省 · 上一代", provider: "agnes" },
   { id: "deepseek-v4-flash", name: "DeepSeek V4 Flash", description: "DeepSeek 官方 · 快而省 · 思考/非思考双模", provider: "deepseek" },
   { id: "deepseek-v4-pro", name: "DeepSeek V4 Pro", description: "DeepSeek 官方 · 旗舰 · 最强推理", provider: "deepseek" },
   { id: "deepseek-ai/DeepSeek-V3", name: "SiliconFlow · DeepSeek V3", description: "硅基流动", provider: "silicon" },

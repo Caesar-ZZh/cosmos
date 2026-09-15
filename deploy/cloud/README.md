@@ -1,7 +1,7 @@
 # NASDX 云服务器部署指南（React/Cosmos 模式）
 
 > 目标：把 NASDX 部署到公网服务器，朋友通过浏览器访问，**开箱即用、无需配置任何 Key**。
-> LLM 默认模型已固定为 **Agnes AI（agnes-2.5-flash）**，Key 已内置在 `deploy/cloud/config.toml`。
+> LLM 默认模型已固定为 **Agnes AI（agnes-3.0-flash）**，Key 已内置在 `deploy/cloud/config.toml`。
 
 ---
 
@@ -71,7 +71,7 @@ pip install -r requirements_nasdx.txt
 [llm]
 base_url = "https://apihub.agnes-ai.com/v1"
 api_key = "<你的 Agnes API Key>"  # 真实 key 只写进 deploy/cloud/config.toml（已 gitignore），绝不要写进任何会提交或分享的文档
-model = "agnes-2.5-flash"
+model = "agnes-3.0-flash"
 ```
 
 如果该文件没有随代码上传，在服务器上手动创建：
@@ -82,7 +82,7 @@ cat > /opt/nasdx/deploy/cloud/config.toml <<'EOF'
 [llm]
 base_url = "https://apihub.agnes-ai.com/v1"
 api_key = "<你的 Agnes API Key>"  # 真实 key 只写进 deploy/cloud/config.toml（已 gitignore），绝不要写进任何会提交或分享的文档
-model = "agnes-2.5-flash"
+model = "agnes-3.0-flash"
 EOF
 chmod 600 /opt/nasdx/deploy/cloud/config.toml
 ```
@@ -248,7 +248,7 @@ python -m uvicorn server.main:app --host 0.0.0.0 --port 8901
 |---|---|---|
 | 后端健康 | `curl http://127.0.0.1:8901/api/health` | `{"ok":true,...,"version":"0.3.0"}` |
 | 前端可访问 | 浏览器开 `http://服务器IP:8901` | 页面正常渲染 |
-| LLM 默认模型 | 前端「接入 AI」页或直接发起一次对话 | provider 显示 Agnes / agnes-2.5-flash，无需手填 |
+| LLM 默认模型 | 前端「接入 AI」页或直接发起一次对话 | provider 显示 Agnes / agnes-3.0-flash，无需手填 |
 | 公网访问 | 手机 4G 访问 `https://你的域名` | 正常打开（走鉴权） |
 | 重启自愈 | `sudo systemctl restart nasdx` | 服务自动恢复 |
 
